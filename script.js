@@ -6,22 +6,59 @@ const allClearBtn = document.querySelector("[data-all-clear]");
 const previousOperand = document.querySelector("[data-previous-operand]");
 const currentOperand = document.querySelector("[data-current-operand]");
 
-
+let currentOperator = undefined;
 
 numbersBtn.forEach(btn => {
     btn.addEventListener("click", () => {
-
         if(currentOperand.innerText === "0") currentOperand.innerText = "";
         if(btn.innerText === "." && currentOperand.innerText.includes(".")) return;
-        currentOperand.innerText = currentOperand.innerText.toString() + btn.innerText.toString();
+        currentOperand.innerText += btn.innerText;
     });
 });
 
 allClearBtn.addEventListener('click', () => {
     currentOperand.innerText = "0";
-    previousOperand.innerText = ""; 
+    previousOperand.innerText = "";
+    currentOperator = undefined;  // ✅ ye bhi reset karo
 });
 
 deleteBtn.addEventListener('click', () => {
-    currentOperand.innerText = currentOperand.innerText.toString().slice(0, -1);
+    if(currentOperand.innerText.length <= 1) {
+        currentOperand.innerText = "0";  // ✅ empty na ho
+    } else {
+        currentOperand.innerText = currentOperand.innerText.slice(0, -1);
+    }
 });
+
+operationsBtn.forEach(btn => {
+    btn.addEventListener("click", () => {
+        if(currentOperand.innerText === "") return;  // ✅ fix
+
+        if(previousOperand.innerText !== "") {
+            calculateResult();
+        }
+
+        currentOperator = btn.innerText;
+        previousOperand.innerText = currentOperand.innerText + " " + currentOperator;
+        currentOperand.innerText = "";
+    });
+});
+
+function calculateResult() {
+    let computation;
+    const prev = parseFloat(previousOperand.innerText);
+    const current = parseFloat(currentOperand.innerText);
+
+    if (isNaN(prev) || isNaN(current)) return;
+
+    if (currentOperator === "+") computation = prev + current;
+    if (currentOperator === "-") computation = prev - current;
+    if (currentOperator === "×") computation = prev * current;  // ✅ fix
+    if (currentOperator === "÷") computation = prev / current;  // ✅ fix
+
+    currentOperand.innerText = computation;
+    previousOperand.innerText = "";
+    currentOperator = undefined;
+}
+
+equalBtn.addEventListener('click', calculateResult);
