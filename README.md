@@ -93,7 +93,9 @@ calculator-app/
 
 ## 📜 License
 
-Distributed under the **MIT License**. Feel free to use, modify, and share.
+This project is licensed under the **MIT License**. For more details, please see the [LICENSE](./LICENSE) file.
+
+Copyright (c) 2026 Mohammad Farhan Shaikh
 
 ---
 
