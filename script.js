@@ -19,12 +19,12 @@ numbersBtn.forEach(btn => {
 allClearBtn.addEventListener('click', () => {
     currentOperand.innerText = "0";
     previousOperand.innerText = "";
-    currentOperator = undefined;  // ✅ ye bhi reset karo
+    currentOperator = undefined; 
 });
 
 deleteBtn.addEventListener('click', () => {
     if(currentOperand.innerText.length <= 1) {
-        currentOperand.innerText = "0";  // ✅ empty na ho
+        currentOperand.innerText = "0";  
     } else {
         currentOperand.innerText = currentOperand.innerText.slice(0, -1);
     }
@@ -32,7 +32,7 @@ deleteBtn.addEventListener('click', () => {
 
 operationsBtn.forEach(btn => {
     btn.addEventListener("click", () => {
-        if(currentOperand.innerText === "") return;  // ✅ fix
+        if(currentOperand.innerText === "") return; 
 
         if(previousOperand.innerText !== "") {
             calculateResult();
@@ -53,8 +53,8 @@ function calculateResult() {
 
     if (currentOperator === "+") computation = prev + current;
     if (currentOperator === "-") computation = prev - current;
-    if (currentOperator === "×") computation = prev * current;  // ✅ fix
-    if (currentOperator === "÷") computation = prev / current;  // ✅ fix
+    if (currentOperator === "×") computation = prev * current;  
+    if (currentOperator === "÷") computation = prev / current;  
 
     currentOperand.innerText = computation;
     previousOperand.innerText = "";
