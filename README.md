@@ -36,6 +36,12 @@ A sleek, responsive **Calculator** built with pure **Vanilla JavaScript**, **HTM
 
 ### Desktop View
 > A clean, centered glassmorphic calculator on a deep dark gradient background.
+> <img width="1919" height="868" alt="image" src="https://github.com/user-attachments/assets/871e7883-cff9-44d9-9d64-4da93fb4bb7a" />
+
+### Mobile View
+> A clean, centered glassmorphic calculator on a deep dark gradient background.
+<img width="297" height="657" alt="image" src="https://github.com/user-attachments/assets/77906c9d-c009-4545-a8d0-fa5cca332c41" />
+
 
 ---
 
